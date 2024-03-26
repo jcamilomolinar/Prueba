@@ -18,3 +18,26 @@ bearer scan MyProyect --skip-path path/*.js, /users
 ## Integración CI/CD
 
 ### Uso en Github Actions
+Se integra facilmente con esta herramienta, es posible usar la llave ```with``` para especificar las banderas del escaneo por ejemplo se puede especificar un ```bearer.yml``` para personalizar el escaneo con la llave ```config-file```. El siguiente YML es una versión ligeramente modificada de la recomendada en la [documentación](https://docs.bearer.com/guides/github-action/).
+```
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  rule_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bearer
+        uses: bearer/bearer-action@v2
+        with:
+          diff: true
+          config-file: "/some/path/bearer.yml"
+```
