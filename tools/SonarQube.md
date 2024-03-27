@@ -4,11 +4,13 @@ Para usar el escaner en el cliente el primer paso es descargarlo de la [pagina o
 
 Primero se enciende el servidor alojado en la descarga de la version Community de SonarQube
 
+
 ```
 sonarqube/bin/linux-x86-64/sonar.sh console
 ```
 
 Se debe navegar a ```localhost:9000``` e ingresar con login:admin y password:admin para acceder, luego se debe crear un proyecto segun las necesidades de cada uno. Luego se ejecuta el analisis desde la consola
+
 
 ```
 sonar-scanner \
@@ -19,6 +21,7 @@ sonar-scanner \
 ```
 
 Para un proyecto de Java con Maven tienen su propio escaner, se ejecuta en la carpeta raiz del proyecto
+
 
 ```
 mvn clean verify sonar:sonar \
@@ -33,6 +36,7 @@ mvn clean verify sonar:sonar \
 ### Uso en Github Actions
 
 La edición Community no soporta el análisis de multiples ramas, solo puede analizarse la rama main, Github debe tener acceso a la instancia local de SonarQube y desde alli generar un token y ambos agregarlos como secretos del repositorio con los nombres de ```SONAR_TOKEN``` y ```SONAR_HOST_URL```, el YAML recomendado por la [documentación](https://github.com/marketplace/actions/official-sonarqube-scan) es el siguiente
+
 
 ```
 on:
@@ -57,5 +61,6 @@ jobs:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 ```
+
 
 Posteriormente los resultados se veran reflejados dentro de la instancia local de Sonar.

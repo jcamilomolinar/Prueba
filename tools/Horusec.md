@@ -2,17 +2,20 @@
 
 Es una herramienta para analizar de forma estatica el codigo para detectar posibles vulnerabilidades de seguridad en el, hay un detalle y es que se debe instalar la ultima version en beta para aprovechar todo el potencial ya que la ultima version estable posee problemas al detectar la version de docker del sistema
 
+
 ```
 curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest-beta
 ```
 
 Para iniciar con el escaneo se debe desplazar hasta la carpeta raiz del proyecto y ejecutar el siguiente comando
 
+
 ```
 horusec start -p .
 ```
 
 Por supuesto es posible personalizar el escaneo mediante banderas en el comando base, las cuales estan especificadas en la [documentación](https://docs.horusec.io/docs/cli/commands-and-flags/) o tambien es posible crear un archivo ```horusec-config.json``` dentro de la carpeta raiz para especificar mas facilmente cada configuración deseada, el siguiente es el ejemplo base de la documentación
+
 
 ```
 {
@@ -165,6 +168,7 @@ Por supuesto es posible personalizar el escaneo mediante banderas en el comando 
 ### Uso en Github Actions
 
 Se puede integrar esta herramienta a este proceso, el YML recomendado por la documentación (ligeramente modificado) es el siguiente
+
 
 ```
 name: SecurityPipeline

@@ -2,11 +2,13 @@
 
 La herramienta gratuita de esta empresa es llamada Machine Standalone que puede ser configurada segun las necesidades para analizar el codigo fuente, funciona a traves de su imagen oficial de docker, entonces primero se debe descargar para correrlo localmente
 
+
 ```
 docker pull fluidattacks/cli
 ```
 
 Luego se ejecuta un contenedor a partir de la imagen indicando la ruta del proyecto que funcionara con un volumen
+
 
 ```
 docker run -v /dir/to/scan:/src fluidattacks/cli skims scan /src
@@ -14,11 +16,13 @@ docker run -v /dir/to/scan:/src fluidattacks/cli skims scan /src
 
 Es posible personalizar la ejecución con un archivo ```config.yaml``` dentro del directorio raiz del proyecto, donde entre otras cosas se pueden especificar que carpetas excluir (o incluir)
 
+
 ```
 docker run -v /your/local/dir:/working-dir fluidattacks/cli:arch skims scan /working-dir/config.yaml
 ```
 
 Un ejemplo sencillo donde solo se usa el engine SAST de la herramienta es el siguiente la llave ```recursion-limit``` se utiliza para evitar largas esperas en los escaneos. Todas las opciones estan explicadas en la [documentación](https://docs.fluidattacks.com/tech/scanner/standalone/configuration/)
+
 
 ```
 namespace: myapp
